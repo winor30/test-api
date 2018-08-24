@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
+	"github.com/winor30/test-api/db"
 	"github.com/winor30/test-api/entity"
 	"github.com/winor30/test-api/service"
 )
@@ -12,7 +13,7 @@ func main() {
 	e := echo.New()
 	// Routing
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Hello, World!")
+		return c.String(http.StatusOK, "Hello, World!!!!!")
 	})
 	e.GET("/users/:name", func(c echo.Context) error {
 		name := c.Param("name")
@@ -26,6 +27,8 @@ func main() {
 		service.SaveUser(u)
 		return c.JSON(http.StatusOK, u)
 	})
+
+	db.CreateClient()
 
 	e.Logger.Fatal(e.Start(":3000"))
 }
