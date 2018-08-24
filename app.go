@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo"
-	"github.com/winor30/test-api/db"
 	"github.com/winor30/test-api/entity"
 	"github.com/winor30/test-api/service"
 )
@@ -27,8 +26,6 @@ func main() {
 		service.SaveUser(u)
 		return c.JSON(http.StatusOK, u)
 	})
-
-	db.CreateClient()
 
 	e.Logger.Fatal(e.Start(":3000"))
 }
